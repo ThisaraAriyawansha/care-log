@@ -120,7 +120,7 @@
 <script>
 
 function editPermission(permissionId) {
-    window.location.href = `/updatePermission/${permissionId}`;
+    window.location.href = `/users/updatePermission/${permissionId}`;
 }
 
 </script>

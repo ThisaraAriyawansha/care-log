@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CareLog  | Welcome</title>
-    <link rel="icon" href="../Logo/MainLogo.png">
+    <link rel="icon" href="{{ asset('Logo/MainLogo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -93,8 +93,9 @@
             <!-- Logo with Holographic Effect and Navigation -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.href = '/dashboard';">
                 <div class="relative">
-                    <img src="../Logo/MainLogo.png" alt="Logo" 
-                        class="object-contain w-12 h-12 rounded-lg pulse-animation">
+                <img src="{{ asset('Logo/MainLogo.png') }}" alt="Logo" 
+                    class="object-contain w-12 h-12 rounded-lg pulse-animation">
+
                     <div class="absolute inset-0 bg-blue-500 rounded-lg mix-blend-overlay opacity-20"></div>
                 </div>
                 <h1 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-700">

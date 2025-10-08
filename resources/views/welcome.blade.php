@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tele Tech Electronics | Login</title>
+    <title>CareLog  | Login</title>
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="public/styles/common.css">
@@ -19,10 +19,10 @@
             style="background-image: url('{{ asset('images/cover-photo.jpg') }}');">
 
             <!-- H1 Tag Above Image -->
-            <h1 class="text-3xl font-bold text-[#0086B8]">Welcome Tele Tech Electronics </h1>
+            <h1 class="text-3xl font-bold text-[#0086B8]">Welcome CareLog  </h1>
 
             <!-- Logo -->
-            <img class="w-75 max-lg:w-[90px]" src="{{ asset('images/logo.png') }}" alt="logo">
+            <img class="w-75 max-lg:w-[90px]" src="./Logo/MainLogo.png" alt="logo">
 
             <!-- Login Button -->
             <a href="{{ route('login') }}">

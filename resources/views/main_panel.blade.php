@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareLog | Control Panel</title>
-    <link rel="icon" href="./{{ $settings[13]->value}}">
+    <link rel="icon" href="./Logo/MainLogo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../styles/common.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">

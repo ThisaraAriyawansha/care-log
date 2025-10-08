@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $settings[6]->value}} | Login</title>
-    <link rel="icon" href="../{{ $settings[13]->value}}">
+    <title>Care-Log | Login</title>
+    <link rel="icon" href="./Logo/MainLogo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -18,8 +18,8 @@
             background: white;
         }
         .btn-primary {
-            background-color: {{ $settings[4]->value }};
-            color: {{ $settings[5]->value }};
+            background-color: #1C1C1E;
+            color: white;
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
@@ -30,8 +30,8 @@
             transition: all 0.3s ease;
         }
         .input-field:focus {
-            border-color: {{ $settings[4]->value }};
-            box-shadow: 0 0 0 3px {{ $settings[4]->value }}20;
+            border-color: #1C1C1E;
+            box-shadow: #1C1C1E;
             transform: scale(1.02);
         }
         @media (max-width: 640px) {
@@ -73,7 +73,7 @@
         .dot {
             width: 12px;
             height: 12px;
-            background-color: {{ $settings[2]->value }};
+            background-color: #1C1C1E;
             border-radius: 50%;
             animation: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             transform-origin: center;
@@ -106,7 +106,7 @@
         }
         .powered-by {
             font-size: 1.25rem;
-            color: {{ $settings[2]->value }};
+            color: #1C1C1E;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
@@ -158,7 +158,7 @@
     <!-- Empty Background with Powered By -->
     <div id="empty-background" class="empty-background">
         <div id="powered-by" class="powered-by">
-            Powered by plexCode.com
+            Welcome to CareLog
         </div>
     </div>
 
@@ -166,18 +166,18 @@
     <div id="main-content" class="flex items-center justify-center min-h-screen p-4 gradient-bg">
         <div class="flex flex-col w-full max-w-4xl overflow-hidden bg-white shadow-xl rounded-2xl mobile-stack lg:flex-row">
             <!-- Left Side - Branding (Hidden on mobile) -->
-            <div class="lg:w-1/2 bg-gradient-to-br from-[{{ $settings[2]->value }}] to-[{{ $settings[4]->value }}] p-8 flex flex-col justify-center items-center text-white hidden sm:flex">
+            <div class="lg:w-1/2 bg-gradient-to-br from-[#1C1C1E] to-[#1C1C1E] p-8 flex flex-col justify-center items-center text-white hidden sm:flex">
                 <div class="w-full max-w-xs mb-8">
-                    <img src="{{ asset($settings[1]->value) }}" alt="Company Logo" class="w-full h-auto">
+                    <img src="./Logo/MainLogo.png" alt="Company Logo" class="w-full h-auto">
                 </div>
                 <h2 class="mb-2 text-2xl font-bold mobile-text-center">Welcome Back!</h2>
                 <p class="text-center opacity-90">Sign in to access your account and continue your journey with us.</p>
             </div>
             
             <!-- Mobile Header (Shown only on mobile) -->
-            <div class="sm:hidden p-6 bg-gradient-to-r from-[{{ $settings[2]->value }}] to-[{{ $settings[4]->value }}] text-white">
+            <div class="sm:hidden p-6 bg-gradient-to-r from-[#1C1C1E] to-[#1C1C1E] text-white">
                 <div class="w-16 h-16 mx-auto mb-4">
-                    <img src="{{ asset($settings[1]->value) }}" alt="Company Logo" class="object-contain w-full h-full">
+                    <img src="./Logo/MainLogo.png" alt="Company Logo" class="object-contain w-full h-full">
                 </div>
                 <h2 class="text-xl font-bold text-center">Welcome Back!</h2>
             </div>
@@ -242,8 +242,7 @@
                 
                 <!-- Footer -->
                 <div class="mt-8 text-xs text-center text-gray-500">
-                    <p>© {{ date('Y') }} {{ $settings[6]->value }}. All rights reserved.</p>
-                    <p class="mt-1">Powered by Plexcode</p>
+                    <p>© {{ date('Y') }} CareLog. All rights reserved.</p>
                 </div>
             </div>
         </div>

@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $settings[6]->value}} | Control Panel</title>
+    <title>CareLog | Control Panel</title>
     <link rel="icon" href="./{{ $settings[13]->value}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../styles/common.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: {{ $settings[7]->value }};
-            --text-color: {{ $settings[15]->value }};
-            --accent-color: {{ $settings[14]->value }};
+            --primary-color: #1C1C1E;
+            --text-color: white;
+            --accent-color: white;
         }
         
         body {
-
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
         
@@ -106,12 +105,12 @@
         <!-- Logo with Holographic Effect -->
         <div class="flex items-center space-x-3">
             <div class="relative">
-                <img src="{{ asset('' . $siteSetting->company_logo) }}" alt="Logo" 
+                <img src="./Logo/MainLogo.png" alt="Logo" 
                      class="object-contain w-12 h-12 rounded-lg pulse-animation">
                 <div class="absolute inset-0 bg-blue-500 rounded-lg mix-blend-overlay opacity-20"></div>
             </div>
-            <h1 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                {{ $settings[6]->value }}
+            <h1 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-700">
+                CareLog
             </h1>
         </div>
 
@@ -119,14 +118,14 @@
         <div class="flex items-center space-x-6">
             <div class="text-right">
                 <p class="text-sm text-gray-300">Welcome back,</p>
-                <p class="font-medium text-white">{{ $siteSetting->site_name }}</p>
+                <p class="font-medium text-white">CareLog</p>
             </div>
             
             <!-- Logout Button with Hover Effect -->
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="relative group">
-                    <div class="flex items-center justify-center w-10 h-10 transition-all rounded-full bg-gradient-to-br from-blue-500 to-purple-600 group-hover:rotate-12">
+                    <div class="flex items-center justify-center w-10 h-10 transition-all rounded-full bg-gradient-to-br from-gray-100 to-gray-700 group-hover:rotate-12">
                         <i class="text-white fas fa-sign-out-alt"></i>
                     </div>
                     <span class="absolute px-2 py-1 text-xs text-white transition-opacity transform -translate-x-1/2 bg-black rounded opacity-0 -bottom-7 left-1/2 bg-opacity-70 group-hover:opacity-100 whitespace-nowrap">
@@ -183,7 +182,7 @@
         <div class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 " >
             @if (has_permission(17))
                 <a href="{{ asset('dash/dash') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/dash.svg" class="w-12 h-12" alt="Dashboard">
                         </div>
@@ -195,7 +194,7 @@
 
             @if (has_permission(18))
                 <a href="{{ asset('sales/billing') }}" target="_blank" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-green-500 to-green-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/billing.svg" class="w-12 h-12" alt="Billing">
                         </div>
@@ -207,7 +206,7 @@
 
             @if (has_permission(19))
                 <a href="{{ asset('item/item') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/items.svg" class="w-12 h-12" alt="Items">
                         </div>
@@ -219,7 +218,7 @@
 
             @if (has_permission(25))
                 <a href="{{ asset('expenses/expenses') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-red-500 to-red-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/expenses.svg" class="w-12 h-12" alt="Items">
                         </div>
@@ -231,7 +230,7 @@
 
             @if (has_permission(20))
                 <a href="{{ asset('stock/stock') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/stock.svg" class="w-12 h-12" alt="Stock">
                         </div>
@@ -243,7 +242,7 @@
 
             @if (has_permission(21))
                 <a href="{{ asset('sales/sales') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-red-500 to-red-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/sales.svg" class="w-12 h-12" alt="Sales">
                         </div>
@@ -255,7 +254,7 @@
 
             @if (has_permission(22))
                 <a href="{{ asset('users/users') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/users.svg" class="w-12 h-12" alt="Users">
                         </div>
@@ -267,7 +266,7 @@
 
             @if (has_permission(23))
                 <a href="{{ asset('customers/customers') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-pink-500 to-pink-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/customer.svg" class="w-12 h-12" alt="Customers">
                         </div>
@@ -279,7 +278,7 @@
 
             @if (has_permission(24))
                 <a href="{{ asset('suppliers/suppliers') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-orange-500 to-orange-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/suppliers.svg" class="w-12 h-12" alt="Suppliers">
                         </div>
@@ -291,7 +290,7 @@
 
             @if (has_permission(26))
                 <a href="{{ asset('reports/reports') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/reports.svg" class="w-12 h-12" alt="Reports">
                         </div>
@@ -303,7 +302,7 @@
 
             @if (has_permission(27))
                 <a href="{{ asset('settings/settings') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/settings.svg" class="w-12 h-12" alt="Settings">
                         </div>
@@ -315,7 +314,7 @@
             
             @if (has_permission(83))
                 <a href="{{ asset('reports/stockReports') }}" class="group">
-                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: {{ $settings[7]->value }}; color: #e0e0e0;">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 icon-hover">
                             <img src="../images/reports/ItemStockReport.png" class="w-12 h-12" alt="Stock Report">
                         </div>

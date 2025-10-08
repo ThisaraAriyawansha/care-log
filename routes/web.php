@@ -165,8 +165,8 @@ Route::get('users/addPermission', [UsersController::class, 'addPermission'])->mi
 Route::get('users/addRole', [UsersController::class, 'addRole'])->middleware('permission:30');
 Route::get('users/addUsers', [UsersController::class, 'addUsers'])->middleware('permission:29');
 Route::get('users/updatePermission/{id}', [UsersController::class, 'editPermission'])->middleware('permission:38');
-Route::get('users/updateRole/{id}', [UsersController::class, 'editRole'])->middleware('permission:37');
-Route::get('users/updateUsers/{id}', [UsersController::class, 'editUsers'])->middleware('permission:36');
+Route::get('updateRole/{id}', [UsersController::class, 'editRole'])->middleware('permission:37');
+Route::get('updateUsers/{id}', [UsersController::class, 'editUsers'])->middleware('permission:36');
 Route::post('/permissions', [UsersController::class, 'store'])->name('permissions.store')->middleware('permission:31');
 Route::put('users/updatePermission/{id}', [UsersController::class, 'updatePermission'])->name('users.updatePermission')->middleware('permission:36');
 Route::post('/role', [UsersController::class, 'storeRole'])->name('role.storeRole')->middleware('permission:30');

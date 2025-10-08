@@ -148,14 +148,11 @@
 
                         
                     </div>
-                    <div>
-                        <label for="details" class="hidden block mb-2 text-sm font-medium text-gray-900">Branch</label>
-                        <!--custom combobox-->
-                    </div>
+ 
                 </div>
                 <div class="flex items-center justify-center w-full gap-4 max-sm:flex-col max-sm:p-0">
                     <button type="submit"
-                        class="py-3 px-6 bg-[{{ $settings[7]->value}}] text-white rounded-lg max-sm:py-1 max-sm:px-3 max-sm:w-full">Save</button>
+                        class="py-3 px-6 bg-[#1C1C1E] text-white rounded-lg max-sm:py-1 max-sm:px-3 max-sm:w-full">Save</button>
                         <button type="reset" class="px-6 py-3 text-white bg-black rounded-lg max-sm:py-1 max-sm:px-3 max-sm:w-full">Reset</button>
                         <button type="button" class="px-6 py-3 text-white bg-red-600 rounded-lg max-sm:py-1 max-sm:px-3 max-sm:w-full"
                         onclick="window.location.href='/users/usersList'">Cancel</button>

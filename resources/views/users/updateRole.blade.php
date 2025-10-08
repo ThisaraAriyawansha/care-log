@@ -115,7 +115,7 @@
                     <button type="reset" class="px-5 py-2.5 text-sm font-medium text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100">
                         Reset
                     </button>
-                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-[{{ $settings[7]->value}}] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button type="submit" class="px-5 py-2.5 text-sm font-medium text-white bg-[#1C1C1E] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-300">
                         Update Permissions
                     </button>
                 </div>

@@ -46,7 +46,7 @@
             <input type="text" id="search_cat"
                 class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Enter Permission name" required />
-            <button onclick="searchItems('search_cat', 'PermissionTable', 2);" class="py-2 px-4 bg-[{{ $settings[7]->value}}] text-white text-sm rounded-md">Search</button>
+            <button onclick="searchItems('search_cat', 'PermissionTable', 2);" class="py-2 px-4 bg-[#1C1C1E] text-white text-sm rounded-md">Search</button>
             <span class="flex items-center gap-2 w-fit max-md:w-full">
                 <input type="number" id="col_num"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
@@ -63,15 +63,15 @@
             <!--table from flowbite-->
             <div class="relative overflow-x-auto">
             <table id="PermissionTable" class="w-full text-sm text-left text-gray-500 rtl:text-right">
-                    <thead class="text-xs text-white uppercase bg-[{{ $settings[7]->value}}]">
+                    <thead class="text-xs text-white uppercase bg-[#1C1C1E]">
                         <tr>
-                            <th scope="col" class="px-4 py-2 rounded-tl-lg">  <!-- Reduced padding -->
+                            <th scope="col" class="px-4 py-2 rounded-tl-lg">  
                                 #
                             </th>
-                            <th scope="col" class="px-4 py-2">  <!-- Reduced padding -->
+                            <th scope="col" class="px-4 py-2">  
                                 Permission Name
                             </th>
-                            <th scope="col" class="px-4 py-2 rounded-tr-lg">  <!-- Reduced padding -->
+                            <th scope="col" class="px-4 py-2 rounded-tr-lg">  
                                 Manage
                             </th>
                         </tr>
@@ -120,7 +120,7 @@
 <script>
 
 function editPermission(permissionId) {
-    window.location.href = `/users/updatePermission/${permissionId}`;
+    window.location.href = `/updatePermission/${permissionId}`;
 }
 
 </script>
@@ -162,171 +162,6 @@ function showEntries() {
     });
 }
 
-
-
-document.getElementById('copyButton').addEventListener('click', function () {
-    // Select the table
-    const table = document.getElementById('PermissionTable');
-    let data = '';
-
-    // Loop through the rows of the table
-    for (let i = 0; i < table.rows.length; i++) {
-        let row = table.rows[i];
-        let rowData = [];
-        
-        // Loop through each cell in the row
-        for (let j = 0; j < row.cells.length; j++) {
-            // Skip the "Manage" column (assumed to be the last column)
-            if (j === row.cells.length - 1) continue;
-
-            // Add cell text, ensuring it is well-trimmed and cleaned
-            rowData.push(row.cells[j].innerText.trim());
-        }
-        
-        // Add formatted row data to the data string
-        data += rowData.join('\t') + '\n'; // Use tab as a separator
-    }
-
-    // Copy the data to the clipboard
-    navigator.clipboard.writeText(data).then(() => {
-        alert('Table data copied to clipboard in a structured format!');
-    }).catch(err => {
-        console.error('Failed to copy: ', err);
-        alert('Failed to copy table data.');
-    });
-});
-
-
-function exportTableToCSV(filename) {
-    const rows = document.querySelectorAll("#PermissionTable tr");
-    let csvContent = "";
-
-    rows.forEach(row => {
-        const cols = Array.from(row.querySelectorAll("th, td"));
-        const rowContent = cols
-            .slice(0, -1) // Exclude the last column
-            .map(col => col.textContent.trim())
-            .join(",");
-        csvContent += rowContent + "\n";
-    });
-
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-
-
-
-function exportTableToExcel(filename) {
-    const table = document.getElementById("PermissionTable");
-    const clonedTable = table.cloneNode(true);
-
-    // Remove "Manage" column from the cloned table
-    const rows = clonedTable.rows;
-    for (let i = 0; i < rows.length; i++) {
-        rows[i].deleteCell(-1); // Delete the last cell in each row
-    }
-
-    const worksheet = XLSX.utils.table_to_sheet(clonedTable);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "PermissionTable");
-    XLSX.writeFile(workbook, filename);
-}
-
-
-
-function exportTableToPDF() {
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-    
-    // Get the table data
-    const table = document.getElementById('PermissionTable');
-    
-    // Extract table data
-    const rows = [];
-    const tableRows = table.querySelectorAll('tr');
-    
-    // Find the index of the "Manage" column (example assumes it's the last column)
-    let manageColumnIndex = -1;
-    const headerCells = tableRows[0].querySelectorAll('th');
-    headerCells.forEach((cell, index) => {
-        if (cell.innerText.toLowerCase() === 'manage') {
-            manageColumnIndex = index;
-        }
-    });
-
-    // Extract rows, skipping the "Manage" column
-    tableRows.forEach((row, rowIndex) => {
-        const cols = row.querySelectorAll('td, th');
-        const rowData = [];
-        
-        cols.forEach((col, index) => {
-            if (index !== manageColumnIndex) {  // Skip "Manage" column
-                rowData.push(col.innerText);
-            }
-        });
-        
-        // Skip empty rows
-        if (rowData.length > 0) {
-            rows.push(rowData);
-        }
-    });
-    
-    // Add table to PDF
-    doc.autoTable({
-        head: [rows[0]], // First row as headers
-        body: rows.slice(1), // Remaining rows as table body
-    });
-
-    // Save PDF
-    doc.save('PermissionTable.pdf');
-}
-
-
-function filterColumn(columnName, tableId) {
-    const checkbox = document.getElementById(`filter_${columnName.toLowerCase().replace(/ /g, '_')}`);
-    
-    if (!checkbox) {
-        console.error(`Checkbox with ID filter_${columnName.toLowerCase().replace(/ /g, '_')} not found.`);
-        return; // Exit if checkbox is not found
-    }
-
-    const table = document.getElementById(tableId);
-    const ths = table.querySelectorAll('th');
-    const tds = table.querySelectorAll('tbody tr');
-
-    let columnIndex;
-    
-    // Find the index of the column based on its name
-    ths.forEach((th, index) => {
-        if (th.textContent.trim() === columnName) {
-            columnIndex = index;
-        }
-    });
-
-    if (columnIndex === undefined) {
-        console.error(`Column ${columnName} not found in the table header.`);
-        return; // Exit if column is not found
-    }
-
-    // Toggle visibility based on checkbox state
-    if (checkbox.checked) {
-        ths[columnIndex].style.display = '';
-        tds.forEach(td => {
-            td.cells[columnIndex].style.display = '';
-        });
-    } else {
-        ths[columnIndex].style.display = 'none';
-        tds.forEach(td => {
-            td.cells[columnIndex].style.display = 'none';
-        });
-    }
-}
 
 
 

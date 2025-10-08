@@ -55,7 +55,7 @@
         <div class="overflow-hidden bg-white border border-gray-200 rounded-lg shadow-sm">
             <div class="overflow-x-auto">
                 <table id="RoleTable" class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-[{{ $settings[7]->value}}]">
+                    <thead class="bg-[#1C1C1E]">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase rounded-tl-lg">
                                 #
@@ -94,7 +94,7 @@
                                 @if(has_permission(37))
                                 <button 
                                     onclick="editRole({{ $role->id }})"
-                                    style="background-color: {{ $settings[7]->value }};"
+                                    style="background-color: #1C1C1E;"
                                     class="px-3 py-1.5 text-sm text-white rounded-md hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2"
                                 >
                                     Edit
@@ -118,7 +118,7 @@
 
 <script>
 function editRole(roleId) {
-    window.location.href = `/users/updateRole/${roleId}`;
+    window.location.href = `/updateRole/${roleId}`;
 }
 
 document.getElementById('search_item').addEventListener('input', function() {

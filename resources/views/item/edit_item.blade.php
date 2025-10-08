@@ -49,24 +49,6 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="Your Item name" value="{{ $item->item_name }}" required />
                     </div>
-
-                    
-                    <div>
-                        <label for="supplier" class="block mb-2 text-sm font-medium text-black ">Supplier</label>
-                        <select id="supplier" name="suppliers_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                            placeholder="Your supplier name" value="" required>
-                            <option >Your supplier name</option>
-                            @foreach ($suppliers as $supplier)
-                                <option value="{{ $supplier->id }}"
-                                    {{ $supplier->id == $item->suppliers_id ? 'selected' : '' }}>
-                                    {{ $supplier->supplier_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-
-                    
                 </div>
                 <div class="grid gap-6 mb-6 md:grid-cols-4">
                     <div>
@@ -75,18 +57,8 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="Enter Qty" value="{{ $item->quantity }}" required />
                     </div>
-                    <div>
-                        <label for="price" class="block mb-2 text-sm font-medium text-black">Purchase Price</label>
-                        <input type="number" id="price" name="purchase_price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Enter price" value="{{ $item->purchase_price }}" step="0.01" required />
-                    </div>
-                    <div>
-                        <label for="retail_price" class="block mb-2 text-sm font-medium text-black">Retail Price</label>
-                        <input type="number" id="retail_price" name="retail_price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Enter retail price" value="{{ $item->retail_price }}" step="0.01" required />
-                    </div>
+
+
                     <div>
                         <label for="minimum_qty" class="block mb-2 text-sm font-medium text-black ">Minimum
                             Quantity</label>
@@ -94,12 +66,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="Enter Minimum Qty" value="{{ $item->minimum_qty }}" step="0.01" required/>
                     </div>
-                    <div>
-                        <label for="wholesale_price" class="block mb-2 text-sm font-medium text-black">Wholesale Price</label>
-                        <input type="number" id="wholesale_price" name="wholesale_price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            placeholder="Enter wholesale price" value="{{ $item->wholesale_price }}" step="0.01" required />
-                    </div>
+
 
                     <div>
                         <label for="category_id" class="block mb-2 text-sm font-medium text-black ">Category</label>
@@ -154,7 +121,7 @@
                     <p id="image_path_error" class="mt-1 text-sm text-red-500"></p>
                 </div><br><br><br><br>
                 <div class="flex items-center justify-center w-full gap-4 p-4">
-                    <button class="py-3 px-6 bg-[{{ $settings[7]->value}}] text-white rounded-lg">Update</button>
+                    <button class="py-3 px-6 bg-[#1C1C1E] text-white rounded-lg">Update</button>
                     <button type="button" class="px-6 py-3 text-white bg-red-600 rounded-lg max-sm:py-1 max-sm:px-3 max-sm:w-full"
                     onclick="window.location.href='/item/item_list'">Cancel</button>
                 </div>

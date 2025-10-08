@@ -74,7 +74,7 @@ Route::get('item/item_list', [ItemController::class, 'item_list'])->middleware('
 Route::get('item/add_item', [ItemController::class, 'item_add'])->name('add_items')->middleware('permission:49');
 Route::post('item/add_item', [ItemController::class, 'item_insert'])->name('add_itam')->middleware('permission:49');
 Route::get('item/edit_item/{id}', [ItemController::class, 'edit'])->middleware('permission:56');
-Route::post('item/edit_item/{id}', [ItemController::class, 'update'])->name('edit_itam')->middleware('permission:56');
+Route::post('item/edit_item/{id}', [ItemController::class, 'update'])->name('edit_item')->middleware('permission:56');
 Route::get('item/delete/{id}', [ItemController::class, 'delete'])->middleware('permission:55');
 Route::post('/payment-success', [ItemController::class, 'paymentSuccess'])->name('payment.store.success');
 Route::get('item/importItem', [ItemController::class, 'importItem'])->middleware('permission:58');
@@ -88,7 +88,7 @@ Route::get('/ItemDetails/{itemCode}', [GenarateQRController::class, 'showItemDet
 Route::get('item/category_list', [CategoryController::class, 'category_list'])->middleware('permission:52');
 Route::get('item/add_category', [CategoryController::class, 'add_category'])->middleware('permission:50');
 Route::post('item/add_category', [CategoryController::class, 'insert_category'])->name('add_category');
-Route::get('/edit_category/{id}', [CategoryController::class, 'edit_category'])->middleware('permission:53');
+Route::get('item/edit_category/{id}', [CategoryController::class, 'edit_category'])->middleware('permission:53');
 Route::post('item/edit_category/{id}', [CategoryController::class, 'update_category'])->name('edit_category')->middleware('permission:53');
 Route::get('item/delete/{id}', [CategoryController::class, 'delete_category'])->middleware('permission:54');
 

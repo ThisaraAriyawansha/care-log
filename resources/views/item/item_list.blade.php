@@ -38,15 +38,9 @@
 
             <!-- Action Buttons -->
             <div class="flex items-center gap-3">
-                <button onclick="exportTableToCSV('items.csv')" class="flex items-center px-4 py-2 text-sm font-medium text-white bg-[{{ $settings[7]->value}}] rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v11m0 0 4-4m-4 4L4 8m11 4v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3"/>
-                    </svg>
-                    Export CSV
-                </button>
                 
                 @if(has_permission(54))
-                <button onclick="window.location.href='/item/add_item'" class="flex items-center px-4 py-2 text-sm font-medium text-white bg-[{{ $settings[7]->value}}] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <button onclick="window.location.href='/item/add_item'" class="flex items-center px-4 py-2 text-sm font-medium text-white bg-[#1C1C1E] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                     </svg>
@@ -79,7 +73,7 @@
                             onkeyup="searchItems()"
                         />
                     </div>
-                    <button type="submit" class="px-4 py-2.5 text-sm font-medium text-white bg-[{{ $settings[7]->value}}] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="px-4 py-2.5 text-sm font-medium text-white bg-[#1C1C1E] rounded-lg hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Search
                     </button>
                 </form>
@@ -105,15 +99,13 @@
         <div class="overflow-hidden bg-white border border-gray-200 rounded-lg shadow-sm">
             <div class="overflow-x-auto">
                 <table id="itemsTable" class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-[{{ $settings[7]->value}}]">
+                    <thead class="bg-[#1C1C1E]">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase rounded-tl-lg">#</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Image</th>
                              <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Item Code</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Item Name</th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Purchase Price</th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Retail Price</th>
-                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Wholesale Price</th>
+
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Qty</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">Status</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase rounded-tr-lg">Actions</th>
@@ -136,10 +128,6 @@
                             </td>
                          <td class="px-6 py-4 text-sm text-gray-900 item-name">{{ $value->item_code }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900 item-name">{{ $value->item_name }}</td>
-                             <td class="px-6 py-4 text-sm text-gray-900 item-name">{{ $value->purchase_price }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900 item-name">{{ $value->retail_price }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-900 item-name">{{ $value->wholesale_price }}</td>
-
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">{{ $value->quantity }}</td>
                             <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
                                 <span class="px-3 py-1 text-xs font-medium rounded-full {{ $value->status_id == 1 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
@@ -149,7 +137,7 @@
                             <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                                 <div class="flex space-x-2">
                                     @if(has_permission(56))
-                                    <a href="{{ url('item/edit_item/'.$value->id) }}" class="px-3 py-1 text-sm text-white bg-[{{ $settings[7]->value}}] rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                    <a href="{{ url('item/edit_item/'.$value->id) }}" class="px-3 py-1 text-sm text-white bg-[#1C1C1E] rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                         Edit
                                     </a>
                                     @endif
@@ -188,15 +176,7 @@
 
 <script>
 // Function to filter table rows based on the search term
-function searchItems() {
-    const searchValue = document.getElementById('searchItemName').value.toLowerCase();
-    const rows = document.querySelectorAll('#itemsTable tbody tr');
 
-    rows.forEach(row => {
-        const itemName = row.querySelector('.item-name').textContent.toLowerCase();
-        row.style.display = itemName.includes(searchValue) ? "" : "none";
-    });
-}
 
 // Function to show a specific number of rows in the table
 function showEntries() {
@@ -208,29 +188,7 @@ function showEntries() {
     });
 }
 
-function exportTableToCSV(filename) {
-    const rows = document.querySelectorAll("#itemsTable tr");
-    let csvContent = "";
 
-    rows.forEach((row, rowIndex) => {
-        const cols = Array.from(row.querySelectorAll("th, td"));
-        const rowContent = cols
-            .filter((col, colIndex) => ![1,9].includes(colIndex)) 
-            .map(col => col.textContent.trim())
-            .join(",");
-
-        csvContent += rowContent + "\n";
-    });
-
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
 
 function toggleItemStatus(ItemId) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

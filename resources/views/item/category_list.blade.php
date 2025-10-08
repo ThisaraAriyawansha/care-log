@@ -31,47 +31,7 @@
                     </li>
                 </ol>
 
-                <!-- Buttons -->
-                <div class="flex items-center gap-2">
-                    <button class="hidden px-4 py-2 text-sm text-white bg-black rounded-md max-sm:px-2 max-sm:py-1">Copy</button>
-                    <button class="hidden px-4 py-2 text-sm text-white bg-black rounded-md max-sm:px-2 max-sm:py-1">CSV</button>
-                    <button class="hidden px-4 py-2 text-sm text-white bg-black rounded-md max-sm:px-2 max-sm:py-1">Excel</button>
-                    <button class="hidden px-4 py-2 text-sm text-white bg-black rounded-md max-sm:px-2 max-sm:py-1">PDF</button>
-                    <button data-popover-target="popover-click" data-popover-trigger="click" data-popover-placement="bottom" 
-                        type="button" class="px-4 py-2 text-sm text-white bg-black rounded-md max-sm:px-2 max-sm:py-1">
-                        Column Visibility
-                    </button>
-                    <div data-popover id="popover-click" role="tooltip" 
-                        class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-fit">
-                        <ul class="flex flex-col w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
-                            <li>
-                                <input id="filter_hash" type="checkbox" checked class="hidden peer">
-                                <label for="filter_hash" 
-                                    class="flex w-full px-3 py-1.5 border-b border-gray-200 rounded-t-lg select-none peer-checked:bg-blue-300" 
-                                    onclick="filterColumn('#');">
-                                    #
-                                </label>
-                            </li>
-                            <li>
-                                <input id="filter_name" type="checkbox" checked class="hidden peer">
-                                <label for="filter_name" 
-                                    class="flex w-full px-3 py-1.5 border-b border-gray-200 select-none peer-checked:bg-blue-300" 
-                                    onclick="filterColumn('Category');">
-                                    Category
-                                </label>
-                            </li>
-                            <li>
-                                <input id="filter_manage" type="checkbox" checked class="hidden peer">
-                                <label for="filter_manage" 
-                                    class="flex w-full px-3 py-1.5 rounded-b-lg select-none peer-checked:bg-blue-300" 
-                                    onclick="filterColumn('Manage');">
-                                    Manage
-                                </label>
-                            </li>
-                        </ul>
-                        <div data-popper-arrow></div>
-                    </div>
-                </div>
+                
             </nav>
         </div>
 
@@ -82,7 +42,7 @@
             <input type="text" id="searchCatName" 
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="Enter Category name" required />
-            <button onclick="searchItems();" class="py-2 px-4 bg-[{{ $settings[7]->value}}] text-white rounded-lg text-sm">Search</button>
+            <button onclick="searchItems();" class="py-2 px-4 bg-[#1C1C1E] text-white rounded-lg text-sm">Search</button>
             <span class="flex items-center gap-3 w-fit max-md:w-full">
                 <input type="number" id="col_num"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -98,7 +58,7 @@
             <!--table from flowbite-->
             <div class="relative overflow-x-auto">
             <table id="catTable" class="w-full text-sm text-left text-gray-500 rtl:text-right">
-                    <thead class="text-xs text-white uppercase bg-[{{ $settings[7]->value}}]">
+                    <thead class="text-xs text-white uppercase bg-[#1C1C1E]">
                         <tr>
                             <th scope="col" class="px-4 py-2 rounded-tl-lg">
                                 #
@@ -128,7 +88,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 @if (has_permission(53))
-                                <a href="{{ url('/edit_category/'.$value->id) }}">
+                                <a href="{{ url('item/edit_category/'.$value->id) }}">
                                     <button class="px-2 py-1 border-2 rounded-lg">Edit</button>
                                 </a>
                                 @endif
@@ -154,66 +114,37 @@
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 <script>
     function searchItems() {
-    const searchValue = document.getElementById('searchCatName').value.toLowerCase();
-    const rows = document.querySelectorAll('#catTable tbody tr');
+        const searchValue = document.getElementById('searchCatName').value.toLowerCase();
+        const rows = document.querySelectorAll('#catTable tbody tr');
 
-    rows.forEach(row => {
-        const itemName = row.querySelector('.catName').textContent.toLowerCase();
+        rows.forEach(row => {
+            const itemName = row.querySelector('.catName').textContent.toLowerCase();
 
-        // Show row if the item name includes the search text; otherwise, hide it
-        if (itemName.includes(searchValue)) {
-            row.style.display = ''; // Show row
-        } else {
-            row.style.display = 'none'; // Hide row
-        }
-    });
-}
-function showEntries() {
-        const rows = document.querySelectorAll('#catTable tbody tr'); // Target the suppliersTable
-        let entries = document.getElementById('col_num').value;
-
-        // Set default value of 30 if input is empty or invalid
-        if (!entries || entries <= 0) {
-            entries = 30;
-        }
-
-        rows.forEach((row, index) => {
-            if (index < entries) {
+            // Show row if the item name includes the search text; otherwise, hide it
+            if (itemName.includes(searchValue)) {
                 row.style.display = ''; // Show row
             } else {
                 row.style.display = 'none'; // Hide row
             }
         });
     }
-    function filterColumn(selectedColName) {
-        // Get the table and its header row
-        var table = document.getElementById("catTable");
-        var th = table.querySelectorAll("thead th");
-        var rows = table.querySelectorAll("tbody tr");
+    function showEntries() {
+            const rows = document.querySelectorAll('#catTable tbody tr'); // Target the suppliersTable
+            let entries = document.getElementById('col_num').value;
 
-        // Find the index of the selected column
-        var colIndex = -1;
-        th.forEach((header, index) => {
-            if (header.textContent.trim() === selectedColName) {
-                colIndex = index;
+            // Set default value of 30 if input is empty or invalid
+            if (!entries || entries <= 0) {
+                entries = 30;
             }
-        });
 
-        if (colIndex === -1) {
-            console.error("Column not found!");
-            return;
+            rows.forEach((row, index) => {
+                if (index < entries) {
+                    row.style.display = ''; // Show row
+                } else {
+                    row.style.display = 'none'; // Hide row
+                }
+            });
         }
-
-        // Toggle visibility of the column
-        var isHidden = th[colIndex].style.display === "none";
-        th[colIndex].style.display = isHidden ? "" : "none";
-
-        rows.forEach((row) => {
-            var cells = row.querySelectorAll("td");
-            if (cells[colIndex]) {
-                cells[colIndex].style.display = isHidden ? "" : "none";
-            }
-        });
-    }
+    
 </script>
 

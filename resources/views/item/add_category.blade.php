@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="flex items-center justify-center w-full gap-4 p-4">
-                    <input type="submit" value="Save" class="py-3 px-6 bg-[{{ $settings[7]->value}}] text-white rounded-lg">
+                    <input type="submit" value="Save" class="py-3 px-6 bg-[#1C1C1E] text-white rounded-lg">
                     <input type="reset" value="Reset" class="px-6 py-3 text-white bg-black rounded-lg">
                 </div>
             </div>

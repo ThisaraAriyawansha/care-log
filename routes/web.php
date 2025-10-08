@@ -88,7 +88,7 @@ Route::get('/ItemDetails/{itemCode}', [GenarateQRController::class, 'showItemDet
 Route::get('item/category_list', [CategoryController::class, 'category_list'])->middleware('permission:52');
 Route::get('item/add_category', [CategoryController::class, 'add_category'])->middleware('permission:50');
 Route::post('item/add_category', [CategoryController::class, 'insert_category'])->name('add_category');
-Route::get('item/edit_category/{id}', [CategoryController::class, 'edit_category'])->middleware('permission:53');
+Route::get('/edit_category/{id}', [CategoryController::class, 'edit_category'])->middleware('permission:53');
 Route::post('item/edit_category/{id}', [CategoryController::class, 'update_category'])->name('edit_category')->middleware('permission:53');
 Route::get('item/delete/{id}', [CategoryController::class, 'delete_category'])->middleware('permission:54');
 

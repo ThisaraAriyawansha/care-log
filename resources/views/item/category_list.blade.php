@@ -128,7 +128,7 @@
                             </td>
                             <td class="px-4 py-2">
                                 @if (has_permission(53))
-                                <a href="{{ url('item/edit_category/'.$value->id) }}">
+                                <a href="{{ url('/edit_category/'.$value->id) }}">
                                     <button class="px-2 py-1 border-2 rounded-lg">Edit</button>
                                 </a>
                                 @endif

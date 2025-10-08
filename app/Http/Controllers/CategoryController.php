@@ -42,7 +42,7 @@ class CategoryController extends Controller
             return response()->json([
                 'status' => 'error',
                 'errors' => $validator->errors(),
-            ], 422); // 422 Unprocessable Entity status code for validation errors
+            ], 422); 
         }
 
         $save = new Item_categorie;
@@ -100,50 +100,4 @@ class CategoryController extends Controller
     }
 
 
-
-    //Color
-    // public function color_list()
-    // {
-    //     $data = Item_categorie::all();
-    //     return view('item.color_list', ['item_categories' => $data]);
-    // }
-    // public function add_color()
-    // {
-    //     return view('item.add_color');
-    // }
-    // public function insert_color(Request $request)
-    // {
-    //     $save = new Item_categorie;
-
-    //     $save->categories = $request->categories;
-    //     $save->description = $request->description;
-    //     $save->save();
-
-    //     return redirect('item/item')->with('success', "Color successfully Add");
-    // }
-
-    // //view for edit
-    // public function edit_color($id)
-    // {
-    //     $categorie = Item_categorie::findOrFail($id);
-    //     return view('item.edit_color', compact('categorie'));
-    // }
-
-    // public function update_color($id, Request $request)
-    // {
-    //     $categorie = Item_categorie::getSingle($id);
-    //     $categorie->categories = trim($request->categories);
-    //     $categorie->description = trim($request->description);
-    //     $categorie->save();
-
-    //     return redirect('item/color_list')->with('success', "Color successfully Updated");
-    // }
-    // public function delete_color($id)
-    // {
-    //     $categorie = Item_categorie::findOrFail($id);
-    //     // Delete the item from the database
-    //     $categorie->delete();
-
-    //     return redirect('item/color_list')->with('success', "Color successfully delete");
-    // }
 }

@@ -47,7 +47,7 @@
     <div class="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         @if(has_permission(29))
         <a href="{{ asset('users/addUsers')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
                         <img src="{{ asset('images/users/addNewUser.png') }}" alt="Add User" class="w-8 h-8">
@@ -61,7 +61,7 @@
 
         @if(has_permission(30))
         <a href="{{ asset('users/addRole')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-green-500 to-green-700">
                         <img src="{{ asset('images/users/addNewRole.png') }}" alt="Add Role" class="w-8 h-8">
@@ -75,7 +75,7 @@
 
         @if(has_permission(31))
         <a href="{{ asset('users/addPermission')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-purple-500 to-purple-700">
                         <img src="{{ asset('images/users/addNewPermission.png') }}" alt="Add Permission" class="w-8 h-8">
@@ -89,7 +89,7 @@
 
         @if(has_permission(32))
         <a href="{{ asset('users/usersList')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-amber-500 to-amber-700">
                         <img src="{{ asset('images/users/userList.png') }}" alt="User List" class="w-8 h-8">
@@ -103,7 +103,7 @@
 
         @if(has_permission(33))
         <a href="{{ asset('users/rolesList')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700">
                         <img src="{{ asset('images/users/roleList.png') }}" alt="Role List" class="w-8 h-8">
@@ -117,7 +117,7 @@
 
         @if(has_permission(34))
         <a href="{{ asset('users/permissionList')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-red-500 to-red-700">
                         <img src="{{ asset('images/users/permissionList.png') }}" alt="Permission List" class="w-8 h-8">

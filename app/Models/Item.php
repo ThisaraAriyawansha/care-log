@@ -25,26 +25,14 @@ class Item extends Model
     protected $fillable = [
         'item_code',
         'item_name',
-        'suppliers_id',
         'quantity',
         'minimum_qty',
-        'purchase_price',
-        'retail_price',
-        'wholesale_price',
         'image_path',
         'status_id',
         'start_qty',
         'item_category_id'
     ];
-    public function salesReturnItems()
-    {
-        return $this->hasMany(SalesReturnItem::class, 'item_id');
-    }
 
-    public function salesItems()
-        {
-            return $this->hasMany(Sales_item::class, 'items_id');
-        }
 
    
 }

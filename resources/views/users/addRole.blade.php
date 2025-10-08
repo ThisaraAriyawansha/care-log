@@ -93,7 +93,6 @@
             </div>
         </div>
         <div class="flex-grow"></div>
-        @include('layouts.footer')
 
     </div>
 

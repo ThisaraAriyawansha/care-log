@@ -48,7 +48,7 @@
     <div class="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
         <!-- Add Donation Card -->
-        @if (has_permission(27))
+        @if (has_permission(94))
         <a href="{{ url('donators/add_donation') }}" class="group">
             <div class="flex flex-col items-center h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
                 <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 icon-hover">
@@ -63,7 +63,7 @@
         @endif
 
         <!-- View My Donations Card -->
-        @if (has_permission(28))
+        @if (has_permission(95))
         <a href="{{ url('/donators/viewdonations') }}" class="group">
             <div class="flex flex-col items-center h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
                 <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-green-500 to-teal-600 icon-hover">

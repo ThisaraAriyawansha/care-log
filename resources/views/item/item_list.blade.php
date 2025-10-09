@@ -141,6 +141,7 @@
                                         Edit
                                     </a>
                                     @endif
+                                     @if(has_permission(56))
                                     <button 
                                         id="status-button-{{ $value->id }}" 
                                         class="px-3 py-1 text-sm text-white {{ $value->status_id == 1 ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700' }} rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 {{ $value->status_id == 1 ? 'focus:ring-red-500' : 'focus:ring-green-500' }}"
@@ -148,6 +149,7 @@
                                     >
                                         {{ $value->status_id == 1 ? 'Mark Out of Stock' : 'Mark In Stock' }}
                                     </button>
+                                    @endif
 
                                 </div>
                             </td>

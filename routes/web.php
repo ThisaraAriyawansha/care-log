@@ -50,10 +50,10 @@ Route::get('/', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'AuthLogin']);
 
 //----dashbord-----//
-Route::get('dash/dash', [DashboardController::class, 'dashboard'])->middleware('permission:17');
+Route::get('dash/dash', [DashboardController::class, 'dashboard'])->middleware('permission:10');
 
 //item
-Route::get('item/item', [ItemController::class, 'item'])->middleware('permission:19');
+Route::get('item/item', [ItemController::class, 'item'])->middleware('permission:17');
 Route::get('item/item_list', [ItemController::class, 'item_list'])->middleware('permission:51');
 Route::get('item/add_item', [ItemController::class, 'item_add'])->name('add_items')->middleware('permission:49');
 Route::post('item/add_item', [ItemController::class, 'item_insert'])->name('add_itam')->middleware('permission:49');
@@ -83,7 +83,7 @@ Route::get('/items/validate/{code}', [ItemController::class, 'validateItemCode']
 
 
 //users
-Route::get('users/users', [UsersController::class, 'users'])->middleware('permission:22');
+Route::get('users/users', [UsersController::class, 'users'])->middleware('permission:19');
 Route::get('users/permissionList', [UsersController::class, 'permissionList'])->middleware('permission:34');
 Route::get('users/rolesList', [UsersController::class, 'rolesList'])->middleware('permission:33');
 Route::get('users/usersList', [UsersController::class, 'usersList'])->middleware('permission:32');
@@ -102,36 +102,36 @@ Route::put('/users/{id}', [UsersController::class, 'update'])->name('users.updat
 Route::post('/users/toggle-status/{id}', [UsersController::class, 'toggleUserStatus'])->middleware('permission:35');
 
 //settings
-Route::get('settings/settings', [SettingsController::class, 'settings'])->name('settings_page');
+Route::get('settings/settings', [SettingsController::class, 'settings'])->name('settings_page')->middleware('permission:21');
 Route::get('settings/changePassword', [SettingsController::class, 'changePassword'])->middleware('permission:69');
 Route::post('settings/changePassword', [SettingsController::class, 'updateChangePassword'])->middleware('permission:69');
 
 
 
 //Stock
-Route::get('stock/stock', [StockController::class, 'stock'])->middleware('permission:20');
+Route::get('stock/stock', [StockController::class, 'stock'])->middleware('permission:18');
 Route::get('stock/addStock', [StockController::class, 'addStock'])->middleware('permission:20');
 Route::get('stock/updateStock/{id}', [StockController::class, 'updateStock'])->middleware('permission:57');
 Route::post('stock/updateStock', [StockController::class, 'storeStockUpdate'])->middleware('permission:57');
 
 
 //donation
-Route::get('donators/donators', [DonationController::class, 'donators'])->middleware('permission:19');
-Route::get('donators/add_donation', [DonationController::class, 'adddonation'])->middleware('permission:19');
+Route::get('donators/donators', [DonationController::class, 'donators'])->middleware('permission:22');
+Route::get('donators/add_donation', [DonationController::class, 'adddonation'])->middleware('permission:94');
 Route::post('/donation/store', [DonationController::class, 'store'])->name('donation.store');
-Route::get('/donators/viewdonations', [DonationController::class, 'viewdonations'])->name('viewdonations');
+Route::get('/donators/viewdonations', [DonationController::class, 'viewdonations'])->name('viewdonations')->middleware('permission:95');
 
 
 //Issuer Routes
-Route::get('issuers/issuers', [IssueController::class, 'issuers'])->middleware('permission:21');
-Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->name('issue.getgoods')->middleware('permission:21');
+Route::get('issuers/issuers', [IssueController::class, 'issuers'])->middleware('permission:23');
+Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->name('issue.getgoods')->middleware('permission:96');
 Route::post('/issuers/store', [IssueController::class, 'store'])->name('issue.store');
-Route::get('/issuers/viewGood', [IssueController::class, 'viewGood'])->name('viewGood');
+Route::get('/issuers/viewGood', [IssueController::class, 'viewGood'])->name('viewGood')->middleware('permission:97');
 
 
 //reports
-Route::get('reports/reports', [ReportController::class, 'reports'])->middleware('permission:59');
-Route::get('/reports/donations', [ReportController::class, 'donations'])->name('reports.donations');
+Route::get('reports/reports', [ReportController::class, 'reports'])->middleware('permission:20');
+Route::get('/reports/donations', [ReportController::class, 'donations'])->name('reports.donations')->middleware('permission:92');
 Route::get('/reports/donations/{id}', [ReportController::class, 'donationDetails'])->name('reports.donationDetails');
-Route::get('reports/issues', [ReportController::class, 'issues'])->middleware('permission:59');
+Route::get('reports/issues', [ReportController::class, 'issues'])->middleware('permission:93');
 Route::get('/reports/issues/{id}', [ReportController::class, 'issueDetails'])->name('reports.issueDetails');

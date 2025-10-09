@@ -46,7 +46,7 @@
     <div class="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
         <!-- Good Donation History -->
-        @if (has_permission(37))
+        @if (has_permission(92))
         <a href="{{ url('reports/donations') }}" class="group">
             <div class="flex flex-col items-center justify-center h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
                 <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-indigo-700">
@@ -64,7 +64,7 @@
         @endif
 
         <!-- Good Issuing History -->
-        @if (has_permission(38))
+        @if (has_permission(93))
         <a href="{{ url('reports/issues') }}" class="group">
             <div class="flex flex-col items-center justify-center h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
                 <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-orange-500 to-yellow-600">

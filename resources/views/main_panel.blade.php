@@ -180,7 +180,7 @@
 
         <!-- Dashboard Grid -->
         <div class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 " >
-            @if (has_permission(17))
+            @if (has_permission(10))
                 <a href="{{ asset('dash/dash') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 icon-hover">
@@ -194,7 +194,7 @@
 
 
 
-            @if (has_permission(19))
+            @if (has_permission(17))
                 <a href="{{ asset('item/item') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 icon-hover">
@@ -207,7 +207,7 @@
             @endif
 
 
-            @if (has_permission(20))
+            @if (has_permission(18))
                 <a href="{{ asset('stock/stock') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-700 icon-hover">
@@ -221,7 +221,7 @@
 
 
 
-            @if (has_permission(22))
+            @if (has_permission(19))
                 <a href="{{ asset('users/users') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700 icon-hover">
@@ -234,7 +234,7 @@
             @endif
 
 
-            @if (has_permission(26))
+            @if (has_permission(20))
                 <a href="{{ asset('reports/reports') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 icon-hover">
@@ -246,7 +246,7 @@
                 </a>
             @endif
 
-            @if (has_permission(27))
+            @if (has_permission(21))
                 <a href="{{ asset('settings/settings') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 icon-hover">
@@ -258,7 +258,7 @@
                 </a>
             @endif
             
-            @if (has_permission(27))
+            @if (has_permission(22))
                 <a href="{{ asset('donators/donators') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-red-500 to-red-700 icon-hover">
@@ -270,7 +270,7 @@
                 </a>
             @endif
 
-            @if (has_permission(27))
+            @if (has_permission(23))
                 <a href="{{ asset('issuers/issuers') }}" class="group">
                     <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-green-500 to-green-700 icon-hover">

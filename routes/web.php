@@ -13,6 +13,7 @@ use App\Http\Controllers\SiteSettingsController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\ReportController;
 
 
 
@@ -126,3 +127,11 @@ Route::get('issuers/issuers', [IssueController::class, 'issuers'])->middleware('
 Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->name('issue.getgoods')->middleware('permission:21');
 Route::post('/issuers/store', [IssueController::class, 'store'])->name('issue.store');
 Route::get('/issuers/viewGood', [IssueController::class, 'viewGood'])->name('viewGood');
+
+
+//reports
+Route::get('reports/reports', [ReportController::class, 'reports'])->middleware('permission:59');
+Route::get('/reports/donations', [ReportController::class, 'donations'])->name('reports.donations');
+Route::get('/reports/donations/{id}', [ReportController::class, 'donationDetails'])->name('reports.donationDetails');
+Route::get('reports/issues', [ReportController::class, 'issues'])->middleware('permission:59');
+Route::get('/reports/issues/{id}', [ReportController::class, 'issueDetails'])->name('reports.issueDetails');

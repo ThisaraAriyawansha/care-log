@@ -264,7 +264,7 @@
                         <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-red-500 to-red-700 icon-hover">
                             <img src="../images/main-panel/btn-icons/customer.png" class="w-12 h-12" alt="Settings">
                         </div>
-                        <h3 class="text-lg font-semibold text-center transition-colors group-hover:text-red-300">donators </h3>
+                        <h3 class="text-lg font-semibold text-center transition-colors group-hover:text-red-300">Donators </h3>
                         <p class="mt-1 text-xs text-center text-gray-300">Manage Donators & Contributions</p>
                     </div>
                 </a>

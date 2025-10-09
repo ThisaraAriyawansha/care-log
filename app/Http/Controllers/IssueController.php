@@ -3,65 +3,100 @@
 namespace App\Http\Controllers;
 
 use App\Models\Issue;
+use App\Models\IssueItem;
+use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class IssueController extends Controller
 {
-    // Get all issues
-    public function index()
+    public function issuers()
     {
-        $issues = Issue::with('issuer')->latest()->get();
-        return response()->json($issues);
+        return view('issuers.issuers');
     }
 
-    // Store a new issue
+    public function getgoods()
+    {
+        $items = Item::where('status_id', 1)      // active items
+                    ->where('quantity', '>', 0) // in stock
+                    ->orderBy('item_name', 'asc')
+                    ->get();
+
+        return view('issuers.getgoods', compact('items'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([
-            'issuer_id' => 'required|exists:users,id',
-            'total_quantity' => 'required|integer|min:1',
-            'issue_date' => 'required|date',
+            'items' => 'required|array|max:3',
+            'items.*.item_id' => 'required|exists:items,id',
+            'items.*.quantity' => 'required|integer|min:1',
+        ], [
+            'items.max' => 'You can only select up to 3 different item types.',
+            'items.required' => 'Please select at least one item.',
         ]);
 
-        $issue = Issue::create($request->all());
+        DB::beginTransaction();
+        try {
+            // Calculate requested quantity
+            $requestedQuantity = array_sum(array_column($request->items, 'quantity'));
 
-        return response()->json([
-            'message' => 'Issue created successfully!',
-            'data' => $issue
-        ], 201);
-    }
+            // Check monthly limit (100 items per user per month)
+            $currentMonth = now()->month;
+            $currentYear = now()->year;
+            $userId = Auth::id();
 
-    // Show single issue
-    public function show($id)
-    {
-        $issue = Issue::with('issuer')->findOrFail($id);
-        return response()->json($issue);
-    }
+            $monthlyTotal = Issue::where('issuer_id', $userId)
+                ->whereMonth('issue_date', $currentMonth)
+                ->whereYear('issue_date', $currentYear)
+                ->sum('total_quantity');
 
-    // Update issue
-    public function update(Request $request, $id)
-    {
-        $issue = Issue::findOrFail($id);
+            if ($monthlyTotal + $requestedQuantity > 100) {
+                return back()->withErrors([
+                    'error' => "You have reached or exceeded the monthly limit of 100 items. Current: {$monthlyTotal}, Requested: {$requestedQuantity}"
+                ]);
+            }
 
-        $request->validate([
-            'total_quantity' => 'nullable|integer|min:1',
-            'issue_date' => 'nullable|date',
-        ]);
+            // Validate that quantities don't exceed available stock
+            foreach ($request->items as $itemData) {
+                $item = Item::find($itemData['item_id']);
+                
+                if ($item->quantity < $itemData['quantity']) {
+                    return back()->withErrors([
+                        'error' => "Insufficient stock for {$item->item_name}. Available: {$item->quantity}, Requested: {$itemData['quantity']}"
+                    ]);
+                }
+            }
 
-        $issue->update($request->only(['total_quantity', 'issue_date']));
+            // Create Issue
+            $issue = Issue::create([
+                'issuer_id' => $userId,
+                'total_quantity' => $requestedQuantity,
+                'issue_date' => now(),
+            ]);
 
-        return response()->json([
-            'message' => 'Issue updated successfully!',
-            'data' => $issue
-        ]);
-    }
+            // Create IssueItems and decrease Item quantities
+            foreach ($request->items as $itemData) {
+                $item = Item::find($itemData['item_id']);
 
-    // Delete issue
-    public function destroy($id)
-    {
-        $issue = Issue::findOrFail($id);
-        $issue->delete();
+                IssueItem::create([
+                    'issue_id' => $issue->id,
+                    'item_id' => $itemData['item_id'],
+                    'quantity' => $itemData['quantity'],
+                ]);
 
-        return response()->json(['message' => 'Issue deleted successfully!']);
+                // Decrease item quantity
+                $item->quantity -= $itemData['quantity'];
+                $item->save();
+            }
+
+            DB::commit();
+            return redirect()->back()->with('success', 'Items issued successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Failed to issue items: ' . $e->getMessage()]);
+        }
     }
 }

@@ -120,4 +120,7 @@ Route::get('donators/add_donation', [DonationController::class, 'adddonation'])-
 Route::post('/donation/store', [DonationController::class, 'store'])->name('donation.store');
 
 
-
+//Issuer Routes
+Route::get('issuers/issuers', [IssueController::class, 'issuers'])->middleware('permission:21');
+Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->middleware('permission:21');
+Route::post('/issuers/store', [IssueController::class, 'store'])->name('issue.store');

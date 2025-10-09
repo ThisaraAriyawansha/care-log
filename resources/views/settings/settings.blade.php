@@ -45,23 +45,11 @@
 
     <!-- Action Cards Grid -->
     <div class="grid grid-cols-1 gap-6 p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        @if(has_permission(68))
-        <a href="{{ asset('settings/siteSettings')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
-                <div class="flex flex-col items-center justify-center h-full text-center">
-                    <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-blue-500 to-blue-700">
-                        <img src="{{ asset('images/settings/siteSettings.png') }}" alt="Site Settings" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-lg font-medium text-white">Site Settings</h3>
-                    <p class="mt-1 text-sm text-gray-300">Configure application preferences</p>
-                </div>
-            </div>
-        </a>
-        @endif
+
 
         @if(has_permission(69))
         <a href="{{ asset('settings/changePassword')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
+            <div class="h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
                 <div class="flex flex-col items-center justify-center h-full text-center">
                     <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-green-500 to-green-700">
                         <img src="{{ asset('images/settings/changePassword.png') }}" alt="Change Password" class="w-8 h-8">
@@ -73,19 +61,7 @@
         </a>
         @endif
 
-        @if(has_permission(82))
-        <a href="{{ asset('settings/changeSite')}}" class="group">
-            <div class="h-full p-6 transition-all duration-300 transform bg-[{{ $settings[7]->value }}] shadow-sm rounded-xl hover:shadow-md hover:-translate-y-1">
-                <div class="flex flex-col items-center justify-center h-full text-center">
-                    <div class="p-4 mb-4 transition-colors duration-300 rounded-full bg-gradient-to-br from-purple-500 to-purple-700">
-                        <img src="{{ asset('images/settings/changeSite.png') }}" alt="Change Site" class="w-8 h-8">
-                    </div>
-                    <h3 class="text-lg font-medium text-white">Change Site</h3>
-                    <p class="mt-1 text-sm text-gray-300">Switch between different sites</p>
-                </div>
-            </div>
-        </a>
-        @endif
+
     </div>
 </div>
 

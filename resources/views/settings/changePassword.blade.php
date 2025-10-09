@@ -90,7 +90,7 @@
                                 class="px-4 py-2 text-sm font-medium text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200"
                                 onclick="window.location.href='{{ route('settings_page') }}'">Cancel</button>
                         <button type="submit" 
-                                class="px-4 py-2 text-sm font-medium text-white transition-colors bg-[{{ $settings[7]->value }}] rounded-lg ">Update Password</button>
+                                class="px-4 py-2 text-sm font-medium text-white transition-colors bg-[#1C1C1E] rounded-lg ">Update Password</button>
                     </div>
                 </div>
             </form>

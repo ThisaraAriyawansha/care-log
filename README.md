@@ -13,7 +13,7 @@ CareLog is a modern **Laravel + MySQL** application built to simplify and organi
 
 # Set up environment file
 cp .env.example .env
-# Copy environment data from DB/env.txt 
+Copy environment data from DB/env.txt 
 
 # Import the Database (carelog.sql) file
 from DB/carelog.sql

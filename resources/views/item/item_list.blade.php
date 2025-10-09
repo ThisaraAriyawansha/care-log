@@ -148,11 +148,7 @@
                                     >
                                         {{ $value->status_id == 1 ? 'Mark Out of Stock' : 'Mark In Stock' }}
                                     </button>
-                                    @if(has_permission(55))
-                                    <a href="{{ url('item/delete/'.$value->id) }}" class="hidden px-3 py-1 text-sm text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                                        Delete
-                                    </a>
-                                    @endif
+
                                 </div>
                             </td>
                         </tr>

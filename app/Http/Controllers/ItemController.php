@@ -33,7 +33,7 @@ class ItemController extends Controller
                   ->orWhereRaw('LOWER(item_code) LIKE ?', ['%' . strtolower($search) . '%']);
         }
     
-        $items = $query->paginate(10);
+        $items = $query->paginate(5);
     
         return view('item.item_list', ['items' => $items, 'search' => $search]);
     }

@@ -28,13 +28,13 @@ class SettingsController extends Controller
     {
         // Validate the input
         $request->validate([
-            'old_password' => 'required|string',  // Ensure old password is provided
-            'new_password' => 'required|string|min:5|confirmed',  // Ensure 'new_password' is confirmed
-            'new_password_confirmation' => 'required|string|min:5',  // Make sure the confirmation field is required
+            'old_password' => 'required|string',  
+            'new_password' => 'required|string|min:5|confirmed',  
+            'new_password_confirmation' => 'required|string|min:5',  
         ]);
     
         // Fetch the authenticated user
-        $user = User::find(Auth::user()->id);  // or User::where('id', Auth::user()->id)->first();
+        $user = User::find(Auth::user()->id);  
         
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');

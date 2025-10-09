@@ -32,7 +32,7 @@ class UsersController extends Controller
     
     public function usersList()
     {
-        $user = User::with(['status', 'role'])->get(); // Eager load status and role relationships
+        $user = User::with(['status', 'role'])->get(); 
         return view('users.usersList', compact('user'));
     }
     
@@ -204,7 +204,7 @@ class UsersController extends Controller
                     $user->password = bcrypt($validatedData['password']);
                     $user->gender = $validatedData['gender'];
                     $user->roles_id = $validatedData['role'];
-                    $user->status_id = 1; // Assuming 1 is the default active status
+                    $user->status_id = 1; 
                 
                     if ($user->save()) {
                         return redirect()->back()->with('success', 'User added successfully.');

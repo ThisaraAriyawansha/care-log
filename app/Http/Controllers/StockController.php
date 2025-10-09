@@ -21,18 +21,14 @@ class StockController extends Controller
 
     public function updateStock($id)
     {
-        // Retrieve the specific item by ID
         $item = Item::find($id);
     
-        // Check if the item exists
         if (!$item) {
             return redirect()->back()->with('error', 'Item not found.');
         }
     
-        // Retrieve stock update records where items_id matches the given ID
         $stockUpdates = Stock_update::where('items_id', $id)->get();
     
-        // Pass the item and stock updates to the view
         return view('stock.updateStock', [
             'item' => $item,
             'stockUpdates' => $stockUpdates
@@ -49,7 +45,7 @@ class StockController extends Controller
         ]);
 
         // Find Item (Ensure $item_id is passed as hidden input)
-        $itemId = $request->input('item_id'); // Assuming you're passing the item's ID
+        $itemId = $request->input('item_id'); 
         $item = Item::find($itemId);
 
         if (!$item) {

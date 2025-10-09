@@ -258,6 +258,17 @@
                 </a>
             @endif
             
+            @if (has_permission(27))
+                <a href="{{ asset('donators/donators') }}" class="group">
+                    <div class="flex flex-col items-center h-full p-6 glass-card rounded-xl" style="background: #1C1C1E; color: #e0e0e0;">
+                        <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 icon-hover">
+                            <img src="../images/main-panel/btn-icons/customer.png" class="w-12 h-12" alt="Settings">
+                        </div>
+                        <h3 class="text-lg font-semibold text-center transition-colors group-hover:text-blue-300">donators </h3>
+                        <p class="mt-1 text-xs text-center text-gray-300">Manage Donators & Contributions</p>
+                    </div>
+                </a>
+            @endif
 
         </div>
     </main>

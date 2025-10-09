@@ -3,65 +3,80 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donation;
+use App\Models\DonationItem;
+use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DonationController extends Controller
 {
-    // Get all donations
-    public function index()
+
+    public function donators()
     {
-        $donations = Donation::with('donator')->latest()->get();
-        return response()->json($donations);
+        return view('donators.donators');
     }
 
-    // Store a new donation
+    public function adddonation()
+    {
+        $items = Item::where('status_id', 1)->get(); // Assuming status_id 1 means active items
+        return view('donators.adddonation', compact('items'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'donator_id' => 'required|exists:users,id',
-            'total_quantity' => 'required|integer|min:1',
-            'donation_date' => 'required|date',
+            'items' => 'required|array',
+            'items.*.item_id' => 'required|exists:items,id',
+            'items.*.quantity' => 'required|integer|min:1',
         ]);
 
-        $donation = Donation::create($request->all());
+        // Calculate the total quantity of items in the current request
+        $newDonationQuantity = array_sum(array_column($request->items, 'quantity'));
 
-        return response()->json([
-            'message' => 'Donation created successfully!',
-            'data' => $donation
-        ], 201);
-    }
+        // Check the donator's total donations for the current month
+        $donatorId = Auth::id();
+        $startOfMonth = now()->startOfMonth();
+        $endOfMonth = now()->endOfMonth();
 
-    // Show a single donation
-    public function show($id)
-    {
-        $donation = Donation::with('donator')->findOrFail($id);
-        return response()->json($donation);
-    }
+        $monthlyDonationTotal = Donation::where('donator_id', $donatorId)
+            ->whereBetween('donation_date', [$startOfMonth, $endOfMonth])
+            ->sum('total_quantity');
 
-    // Update donation
-    public function update(Request $request, $id)
-    {
-        $donation = Donation::findOrFail($id);
+        // Check if the new donation exceeds the 300-item monthly limit
+        if ($monthlyDonationTotal + $newDonationQuantity > 300) {
+            return back()->withErrors(['error' => 'You have exceeded the monthly donation limit of 300 items.']);
+        }
 
-        $request->validate([
-            'total_quantity' => 'nullable|integer|min:1',
-            'donation_date' => 'nullable|date',
-        ]);
+        DB::beginTransaction();
+        try {
+            // Create Donation
+            $donation = Donation::create([
+                'donator_id' => $donatorId,
+                'total_quantity' => $newDonationQuantity,
+                'donation_date' => now(),
+            ]);
 
-        $donation->update($request->only(['total_quantity', 'donation_date']));
+            // Create DonationItems and increase Item quantities
+            foreach ($request->items as $itemData) {
+                $item = Item::find($itemData['item_id']);
 
-        return response()->json([
-            'message' => 'Donation updated successfully!',
-            'data' => $donation
-        ]);
-    }
+                DonationItem::create([
+                    'donation_id' => $donation->id,
+                    'item_id' => $itemData['item_id'],
+                    'quantity' => $itemData['quantity'],
+                ]);
 
-    // Delete donation
-    public function destroy($id)
-    {
-        $donation = Donation::findOrFail($id);
-        $donation->delete();
+                // Increase item quantity
+                $item->quantity += $itemData['quantity'];
+                $item->save();
+            }
 
-        return response()->json(['message' => 'Donation deleted successfully!']);
+            DB::commit();
+            return redirect()->back()->with('success', 'Donation added successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

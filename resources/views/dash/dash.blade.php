@@ -19,131 +19,148 @@
     </div>
 
     <!-- Key Metrics Grid -->
-    <div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-        <!-- Total Sales -->
+    <div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <!-- Total Donations -->
         <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500">Total Sales</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($totalSales, 2) }}</h3>
-                </div>
-                <div class="p-3 rounded-lg bg-blue-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 bg-blue-500 rounded-full" style="width: 85%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sales Due -->
-        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-500">Sales Due</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($totalDue, 2) }}</h3>
-                </div>
-                <div class="p-3 rounded-lg bg-amber-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 rounded-full bg-amber-500" style="width: 65%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Today's Sales -->
-        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-500">Today's Sales</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($todaySales, 2) }}</h3>
+                    <p class="text-sm font-medium text-gray-500">Total Donations</p>
+                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">{{ number_format($totalDonations) }}</h3>
+                    <p class="mt-1 text-sm text-gray-500">Items donated</p>
                 </div>
                 <div class="p-3 rounded-lg bg-green-50">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                     </svg>
                 </div>
             </div>
             <div class="mt-4">
                 <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 bg-green-500 rounded-full" style="width: 75%"></div>
+                    <div class="h-1 bg-green-500 rounded-full" style="width: 85%"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Total Expenses -->
+        <!-- Total Issues -->
         <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm font-medium text-gray-500">Total Expenses</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($totalExpenses, 2) }}</h3>
+                    <p class="text-sm font-medium text-gray-500">Total Issues</p>
+                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">{{ number_format($totalIssues) }}</h3>
+                    <p class="mt-1 text-sm text-gray-500">Items issued</p>
                 </div>
-                <div class="p-3 rounded-lg bg-red-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 bg-red-500 rounded-full" style="width: 45%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Today's Expenses -->
-        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-500">Today's Expenses</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($todayExpenses, 2) }}</h3>
-                </div>
-                <div class="p-3 rounded-lg bg-purple-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
-                </div>
-            </div>
-            <div class="mt-4">
-                <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 bg-purple-500 rounded-full" style="width: 30%"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Received -->
-        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-500">Payment Received</p>
-                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">Rs. {{ number_format($totalSales, 2) }}</h3>
-                </div>
-                <div class="p-3 rounded-lg bg-indigo-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="p-3 rounded-lg bg-blue-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                 </div>
             </div>
             <div class="mt-4">
                 <div class="h-1 bg-gray-200 rounded-full">
-                    <div class="h-1 bg-indigo-500 rounded-full" style="width: 90%"></div>
+                    <div class="h-1 bg-blue-500 rounded-full" style="width: 65%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Donations -->
+        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500">Today's Donations</p>
+                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">{{ number_format($todayDonations) }}</h3>
+                    <p class="mt-1 text-sm text-gray-500">Items donated today</p>
+                </div>
+                <div class="p-3 rounded-lg bg-amber-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="h-1 bg-gray-200 rounded-full">
+                    <div class="h-1 rounded-full bg-amber-500" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Issues -->
+        <div class="p-6 transition-shadow duration-300 bg-white shadow-sm rounded-xl hover:shadow-md">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-500">Today's Issues</p>
+                    <h3 class="mt-1 text-2xl font-semibold text-gray-800">{{ number_format($todayIssues) }}</h3>
+                    <p class="mt-1 text-sm text-gray-500">Items issued today</p>
+                </div>
+                <div class="p-3 rounded-lg bg-purple-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="h-1 bg-gray-200 rounded-full">
+                    <div class="h-1 bg-purple-500 rounded-full" style="width: 45%"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Secondary Metrics and Charts -->
+    <!-- Charts and Tables Section -->
+    <div class="grid grid-cols-1 gap-6 p-8 lg:grid-cols-2">
+        <!-- Top Products Donated Chart -->
+        <div class="p-6 bg-white shadow-sm rounded-xl">
+            <h3 class="text-lg font-medium text-gray-800">Top Products Donated</h3>
+            <div id="top-products-chart" class="mt-4"></div>
+        </div>
+
+        <!-- Top 5 Donators Table -->
+        <div class="p-6 bg-white shadow-sm rounded-xl">
+            <h3 class="text-lg font-medium text-gray-800">Top 5 Donators</h3>
+            <div class="mt-4 overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
+                                Rank
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
+                                Donator Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
+                                Total Items Donated
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach($topDonators as $index => $donator)
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                #{{ $index + 1 }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                {{ $donator->donator->name ?? 'Unknown Donator' }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                {{ number_format($donator->total_donated) }}
+                            </td>
+                        </tr>
+                        @endforeach
+                        @if($topDonators->isEmpty())
+                        <tr>
+                            <td colspan="3" class="px-6 py-4 text-sm text-center text-gray-500">
+                                No donation data available
+                            </td>
+                        </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Overview and Stock Alerts -->
     <div class="grid grid-cols-1 gap-6 p-8 lg:grid-cols-3">
-        <!-- Entity Counts -->
+        <!-- System Overview -->
         <div class="p-6 bg-white shadow-sm rounded-xl">
             <h3 class="text-lg font-medium text-gray-800">System Overview</h3>
             <div class="grid grid-cols-2 gap-4 mt-6">
@@ -153,17 +170,17 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
-                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $customerCount }}</h4>
-                    <p class="text-sm text-gray-500">Customers</p>
+                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $donatorCount }}</h4>
+                    <p class="text-sm text-gray-500">Donators</p>
                 </div>
                 <div class="p-4 text-center border border-gray-100 rounded-lg">
                     <div class="flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
-                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $supplierCount }}</h4>
-                    <p class="text-sm text-gray-500">Suppliers</p>
+                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $issuerCount }}</h4>
+                    <p class="text-sm text-gray-500">Issuers</p>
                 </div>
                 <div class="p-4 text-center border border-gray-100 rounded-lg">
                     <div class="flex justify-center">
@@ -177,40 +194,27 @@
                 <div class="p-4 text-center border border-gray-100 rounded-lg">
                     <div class="flex justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $invoiceCount }}</h4>
-                    <p class="text-sm text-gray-500">Invoices</p>
+                    <h4 class="mt-2 text-xl font-semibold text-gray-700">{{ $donationCount + $issueCount }}</h4>
+                    <p class="text-sm text-gray-500">Total Records</p>
                 </div>
             </div>
         </div>
 
-        <!-- Sales Chart -->
-        <div class="p-6 bg-white shadow-sm rounded-xl lg:col-span-2">
-            <div class="flex items-center justify-between">
-                <div class="flex space-x-2">
-                    <button id="chartBtn" class="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                        Chart
-                    </button>
-                    <button id="tableBtn" class="px-4 py-2 text-sm font-medium text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-                        Stock Alerts
-                    </button>
+            <!-- Stock Alerts -->
+            <div class="p-6 bg-white shadow-sm rounded-xl lg:col-span-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium text-gray-800">Stock Alerts</h3>
+                    <span class="px-3 py-1 text-sm text-gray-600 bg-gray-100 rounded-full">
+                        {{ $items->count() }} Items
+                    </span>
                 </div>
-            </div>
-            <div id="chart" class="mt-6">
-            <h3 class="text-lg font-medium text-gray-800">Sales Chart</h3>
-                <div id="labels-chart"></div>
-            </div>
-            <div id="table" class="hidden mt-6 overflow-hidden rounded-lg">
-         <h3 class="text-lg font-medium text-gray-800">Item Stock</h3>
-                <div class="overflow-x-auto">
+                <div class="mt-4 overflow-x-auto overflow-y-auto max-h-96">
                     <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-800">
+                        <thead class="sticky top-0 bg-gray-800">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
-                                    #
-                                </th>
                                 <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
                                     Item Name
                                 </th>
@@ -220,22 +224,25 @@
                                 <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
                                     Minimum Quantity
                                 </th>
+                                <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-white uppercase">
+                                    Status
+                                </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($items as $item)
-                            <tr class="{{ $item->quantity < $item->minimum_qty ? 'bg-red-50' : 'hover:bg-gray-50' }}">
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    {{ $loop->iteration }}
-                                </td>
+                            @foreach($items->where('quantity', '<', 'minimum_qty') as $item)
+                            <tr class="{{ $item->quantity < $item->minimum_qty ? 'bg-red-100 hover:bg-red-200' : 'bg-gray-50 hover:bg-gray-100' }}">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
                                     {{ $item->item_name }}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
                                     {{ $item->quantity }}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
                                     {{ $item->minimum_qty }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-900 whitespace-nowrap">
+                                    {{ $item->status_id == 1 ? 'In Stock' : 'Out Of Stock' }}
                                 </td>
                             </tr>
                             @endforeach
@@ -243,102 +250,71 @@
                     </table>
                 </div>
             </div>
-        </div>
     </div>
-
-    <!-- Recent Activity Section -->
-    
 </div>
 
 @include('layouts.footer')
 
 <script>
-    // Toggle between chart and table
-    const chartBtn = document.getElementById("chartBtn");
-    const tableBtn = document.getElementById("tableBtn");
-    const chart = document.getElementById("chart");
-    const table = document.getElementById("table");
-
-    chartBtn.addEventListener("click", () => {
-        chartBtn.classList.add("bg-gray-800", "text-white");
-        chartBtn.classList.remove("bg-gray-100", "text-gray-800");
-        tableBtn.classList.add("bg-gray-100", "text-gray-800");
-        tableBtn.classList.remove("bg-gray-800", "text-white");
-        chart.classList.remove("hidden");
-        table.classList.add("hidden");
-    });
-
-    tableBtn.addEventListener("click", () => {
-        tableBtn.classList.add("bg-gray-800", "text-white");
-        tableBtn.classList.remove("bg-gray-100", "text-gray-800");
-        chartBtn.classList.add("bg-gray-100", "text-gray-800");
-        chartBtn.classList.remove("bg-gray-800", "text-white");
-        table.classList.remove("hidden");
-        chart.classList.add("hidden");
-    });
-
-    // ApexCharts configuration
-    const monthlySalesData = @json($monthlySales);
+    // Top Products Donated Chart
+    const topDonatedItems = @json($topDonatedItems);
     
-    const options = {
+    const itemNames = topDonatedItems.map(item => item.item ? item.item.item_name : 'Unknown Item');
+    const itemQuantities = topDonatedItems.map(item => item.total_donated);
+
+    const chartOptions = {
         chart: {
-            type: 'area',
+            type: 'bar',
             height: 350,
             toolbar: {
                 show: false
             },
-            zoom: {
-                enabled: false
-            },
             fontFamily: 'Inter, sans-serif',
             foreColor: '#6B7280'
+        },
+        plotOptions: {
+            bar: {
+                borderRadius: 4,
+                horizontal: false,
+                columnWidth: '55%',
+            }
         },
         dataLabels: {
             enabled: false
         },
         stroke: {
-            curve: 'smooth',
-            width: 3
-        },
-        fill: {
-            type: 'gradient',
-            gradient: {
-                shadeIntensity: 1,
-                opacityFrom: 0.7,
-                opacityTo: 0.1,
-                stops: [0, 90, 100]
-            }
+            show: true,
+            width: 2,
+            colors: ['transparent']
         },
         xaxis: {
-            categories: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            categories: itemNames,
             axisBorder: {
                 show: false
             },
             axisTicks: {
                 show: false
-            },
-            tooltip: {
-                enabled: false
             }
         },
         yaxis: {
-            labels: {
-                formatter: function(value) {
-                    return 'Rs.' + value.toLocaleString();
-                }
+            title: {
+                text: 'Quantity Donated'
             }
+        },
+        fill: {
+            opacity: 1
         },
         tooltip: {
             y: {
-                formatter: function(value) {
-                    return 'Rs.' + value.toLocaleString();
+                formatter: function (val) {
+                    return val + ' items'
                 }
             }
         },
-        colors: ['#3B82F6'],
+        colors: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'],
         series: [{
-            name: 'Sales',
-            data: monthlySalesData
+            name: 'Items Donated',
+            data: itemQuantities
         }],
         grid: {
             borderColor: '#F3F4F6',
@@ -352,8 +328,26 @@
         }
     };
 
-    if (document.getElementById("labels-chart") && typeof ApexCharts !== 'undefined') {
-        const chart = new ApexCharts(document.getElementById("labels-chart"), options);
+    if (document.getElementById("top-products-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("top-products-chart"), chartOptions);
         chart.render();
     }
+
+    // Monthly Donations Chart (if you want to add it back)
+    const monthlyDonationsData = @json($monthlyDonations);
+    
+    const monthlyOptions = {
+        chart: {
+            type: 'area',
+            height: 350,
+            toolbar: {
+                show: false
+            }
+        },
+        // ... similar to your existing monthly chart options
+        series: [{
+            name: 'Donations',
+            data: monthlyDonationsData
+        }]
+    };
 </script>

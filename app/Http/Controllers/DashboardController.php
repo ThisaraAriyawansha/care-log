@@ -3,89 +3,85 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Expense;
-use App\Models\Payment;
-use App\Models\Sale;
-use App\Models\Customer;
-use App\Models\Supplier;
+use App\Models\Donation;
+use App\Models\Issue;
 use App\Models\Item;
+use App\Models\User;
+use App\Models\DonationItem;
+use App\Models\IssueItem;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function dashboard()
-{
-    // Fetch total expenses
-    $totalExpenses = Expense::sum('amount');
+    {
+        // Total Donations (sum of total_quantity from donations)
+        $totalDonations = Donation::sum('total_quantity');
 
-    // Fetch total sales and the grand total from payments
-    $totalSales = Sale::with('payment')->get()->sum(function ($sale) {
-        return $sale->payment->grand_total ?? 0;
-    });
+        // Total Issues (sum of total_quantity from issues)
+        $totalIssues = Issue::sum('total_quantity');
 
-    // Fetch total due (sum of the due_amount in payments)
-    $totalDue = Payment::sum('grand_total') - Payment::sum('paid_amount');
+        // Today's Donations
+        $todayDonations = Donation::whereDate('donation_date', today())->sum('total_quantity');
 
-    // Fetch today's total sales (filtered by today's date)
-    $todaySales = Sale::whereDate('created_at', today())
-    ->whereHas('payment') // Ensure the payment exists
-    ->with('payment')
-    ->get()
-    ->sum(function ($sale) {
-        // Safely access the grand_total and default to 0 if NULL
-        return $sale->payment->grand_total ?? 0;
-    });
+        // Today's Issues
+        $todayIssues = Issue::whereDate('issue_date', today())->sum('total_quantity');
 
+        // Counts
+        $donatorCount = User::whereHas('role', function($q) {
+            $q->where('role_name', 'Donator');
+        })->count();
 
-    // Fetch today's total expenses (filtered by today's date)
-    $todayExpenses = Expense::whereDate('expense_date', today())->sum('amount');
+        $issuerCount = User::whereHas('role', function($q) {
+            $q->where('role_name', 'Issuer');
+        })->count();
 
-    // Fetch counts for Customers, Suppliers, Items, and Sales Invoices
-    $customerCount = Customer::count();
-    $supplierCount = Supplier::count();
-    $itemCount = Item::count();
-    $invoiceCount = Payment::count();
+        $itemCount = Item::count();
+        $donationCount = Donation::count();
+        $issueCount = Issue::count();
 
-    // Fetch all items with their details (name, quantity, minimum_qty)
-    $items = Item::all();
+        // Top 5 Donated Items (by quantity from donation_items)
+        $topDonatedItems = DonationItem::select('item_id', DB::raw('SUM(quantity) as total_donated'))
+            ->with('item')
+            ->groupBy('item_id')
+            ->orderByDesc('total_donated')
+            ->limit(5)
+            ->get();
 
-    // Calculate total sales for each month (this is just an example, adjust as needed)
- // Fetch total sales for each month along with item prices
- $monthlySales = [];
- for ($i = 1; $i <= 12; $i++) {
-     $salesInMonth = Sale::whereMonth('created_at', $i)
-         ->with(['salesItems.item']) // Load sales items and associated items
-         ->get();
+        // Top 5 Donators (by total_quantity from donations)
+        $topDonators = Donation::select('donator_id', DB::raw('SUM(total_quantity) as total_donated'))
+            ->with('donator')
+            ->groupBy('donator_id')
+            ->orderByDesc('total_donated')
+            ->limit(5)
+            ->get();
 
-     $totalSalesForMonth = 0;
+        // Monthly Donations Data for Chart
+        $monthlyDonations = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $monthlyDonations[] = Donation::whereMonth('donation_date', $i)
+                ->whereYear('donation_date', date('Y'))
+                ->sum('total_quantity');
+        }
 
-     // Loop through the sales and their items to calculate the total sales
-     foreach ($salesInMonth as $sale) {
-         foreach ($sale->salesItems as $salesItem) {
-             $item = $salesItem->item; // Get the item associated with this sales item
-             if ($item) {
-                 // Calculate total price (quantity * item price)
-                 $totalSalesForMonth += $salesItem->quantity * $item->retail_price;
-             }
-         }
-     }
+        // Items for stock alerts
+        $items = Item::all();
 
-     $monthlySales[] = $totalSalesForMonth;
- }
-
-    // Pass all data to the view
-    return view('dash.dash', [
-        'totalExpenses' => $totalExpenses,
-        'totalSales' => $totalSales,
-        'totalDue' => $totalDue,
-        'todaySales' => $todaySales,
-        'todayExpenses' => $todayExpenses,
-        'customerCount' => $customerCount,
-        'supplierCount' => $supplierCount,
-        'itemCount' => $itemCount,
-        'invoiceCount' => $invoiceCount,
-        'items' => $items, // Pass the items data to the view
-        'monthlySales' => $monthlySales,
-    ]);
-}
-
+        // Pass data to the view
+        return view('dash.dash', [
+            'totalDonations' => $totalDonations,
+            'totalIssues' => $totalIssues,
+            'todayDonations' => $todayDonations,
+            'todayIssues' => $todayIssues,
+            'donatorCount' => $donatorCount,
+            'issuerCount' => $issuerCount,
+            'itemCount' => $itemCount,
+            'donationCount' => $donationCount,
+            'issueCount' => $issueCount,
+            'topDonatedItems' => $topDonatedItems,
+            'topDonators' => $topDonators,
+            'monthlyDonations' => $monthlyDonations,
+            'items' => $items,
+        ]);
+    }
 }

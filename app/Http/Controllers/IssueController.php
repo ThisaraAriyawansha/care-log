@@ -8,6 +8,8 @@ use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class IssueController extends Controller
 {
@@ -98,5 +100,40 @@ class IssueController extends Controller
             DB::rollBack();
             return back()->withErrors(['error' => 'Failed to issue items: ' . $e->getMessage()]);
         }
+    }
+
+
+    public function viewGood()
+    {
+        // Get logged-in user's issues with pagination
+        $issues = Issue::where('issuer_id', Auth::id())
+                       ->with(['items.item'])
+                       ->orderBy('issue_date', 'desc')
+                       ->paginate(10);
+
+        // Calculate statistics
+        $totalIssues = Issue::where('issuer_id', Auth::id())->count();
+        
+        $totalQuantity = Issue::where('issuer_id', Auth::id())
+                              ->sum('total_quantity');
+        
+        $monthlyIssues = Issue::where('issuer_id', Auth::id())
+                              ->whereMonth('issue_date', Carbon::now()->month)
+                              ->whereYear('issue_date', Carbon::now()->year)
+                              ->count();
+        
+        $lastIssue = Issue::where('issuer_id', Auth::id())
+                          ->latest('issue_date')
+                          ->first();
+        
+        $lastIssueDate = $lastIssue ? Carbon::parse($lastIssue->issue_date)->format('M d, Y') : 'N/A';
+
+        return view('issuers.viewGood', compact(
+            'issues',
+            'totalIssues',
+            'totalQuantity',
+            'monthlyIssues',
+            'lastIssueDate'
+        ));
     }
 }

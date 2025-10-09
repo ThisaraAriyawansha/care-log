@@ -122,5 +122,6 @@ Route::post('/donation/store', [DonationController::class, 'store'])->name('dona
 
 //Issuer Routes
 Route::get('issuers/issuers', [IssueController::class, 'issuers'])->middleware('permission:21');
-Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->middleware('permission:21');
+Route::get('issuers/getgoods', [IssueController::class, 'getgoods'])->name('issue.getgoods')->middleware('permission:21');
 Route::post('/issuers/store', [IssueController::class, 'store'])->name('issue.store');
+Route::get('/issuers/viewGood', [IssueController::class, 'viewGood'])->name('viewGood');

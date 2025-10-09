@@ -64,7 +64,7 @@
 
         <!-- View My Donations Card -->
         @if (has_permission(28))
-        <a href="{{ url('donators/my_donations') }}" class="group">
+        <a href="{{ url('/donators/viewdonations') }}" class="group">
             <div class="flex flex-col items-center h-full p-6 transition-all duration-300 transform bg-[#1C1C1E] shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
                 <div class="flex items-center justify-center w-20 h-20 mb-4 rounded-full bg-gradient-to-br from-green-500 to-teal-600 icon-hover">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">

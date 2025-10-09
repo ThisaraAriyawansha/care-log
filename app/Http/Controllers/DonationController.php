@@ -17,6 +17,18 @@ class DonationController extends Controller
         return view('donators.donators');
     }
 
+    public function viewdonations()
+    {
+        // Get the authenticated user's donations with related items
+        $donations = Donation::with('items.item')
+            ->where('donator_id', Auth::id())
+            ->orderBy('donation_date', 'desc')
+            ->get();
+
+        return view('donators.viewdonations', compact('donations'));
+    }
+
+    
     public function adddonation()
     {
         $items = Item::where('status_id', 1)->get(); // Assuming status_id 1 means active items

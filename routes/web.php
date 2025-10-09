@@ -118,6 +118,7 @@ Route::post('stock/updateStock', [StockController::class, 'storeStockUpdate'])->
 Route::get('donators/donators', [DonationController::class, 'donators'])->middleware('permission:19');
 Route::get('donators/add_donation', [DonationController::class, 'adddonation'])->middleware('permission:19');
 Route::post('/donation/store', [DonationController::class, 'store'])->name('donation.store');
+Route::get('/donators/viewdonations', [DonationController::class, 'viewdonations'])->name('viewdonations');
 
 
 //Issuer Routes

@@ -11,6 +11,8 @@ use App\Http\Controllers\StockController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SiteSettingsController;
 use App\Http\Controllers\SystemController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\IssueController;
 
 
 

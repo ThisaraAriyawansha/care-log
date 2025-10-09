@@ -33,6 +33,15 @@ class Item extends Model
         'item_category_id'
     ];
 
+    public function donationItems()
+    {
+        return $this->hasMany(DonationItem::class);
+    }
+
+    public function issueItems()
+    {
+        return $this->hasMany(IssueItem::class);
+    }
 
    
 }

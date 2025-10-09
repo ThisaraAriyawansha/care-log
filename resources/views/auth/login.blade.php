@@ -12,7 +12,6 @@
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            overflow: hidden;
         }
         .gradient-bg {
             background: white;
@@ -48,122 +47,12 @@
                 margin-top: 1rem;
             }
         }
-        /* Loading Animation Styles */
-        .loading-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease;
-        }
-        .loading-container.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .loading-dots {
-            display: flex;
-            gap: 12px;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            background-color: #1C1C1E;
-            border-radius: 50%;
-            animation: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            transform-origin: center;
-        }
-        .dot:nth-child(2) { animation-delay: 0.2s; }
-        .dot:nth-child(3) { animation-delay: 0.4s; }
-        .dot:nth-child(4) { animation-delay: 0.6s; }
-        .dot:nth-child(5) { animation-delay: 0.8s; }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.6); opacity: 1; }
-        }
-        /* Empty Background and Powered By Styles */
-        .empty-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            transition: opacity 0.8s ease;
-        }
-        .empty-background.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .powered-by {
-            font-size: 1.25rem;
-            color: #1C1C1E;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .powered-by.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Content Animation */
-        #main-content {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        #main-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Form Element Animations */
-        .form-field {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .form-field.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .form-field:nth-child(1) { transition-delay: 0.1s; }
-        .form-field:nth-child(2) { transition-delay: 0.2s; }
-        .form-field:nth-child(3) { transition-delay: 0.3s; }
-        .form-field:nth-child(4) { transition-delay: 0.4s; }
     </style>
 </head>
 
 <body class="gradient-bg">
-    <!-- Loading Animation -->
-    <div id="loading" class="loading-container">
-        <div class="loading-dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
-    </div>
-
-    <!-- Empty Background with Powered By -->
-    <div id="empty-background" class="empty-background">
-        <div id="powered-by" class="powered-by">
-            Welcome to CareLog
-        </div>
-    </div>
-
-    <!-- Original Login Interface -->
-    <div id="main-content" class="flex items-center justify-center min-h-screen p-4 gradient-bg">
+    <!-- Login Interface -->
+    <div class="flex items-center justify-center min-h-screen p-4 gradient-bg">
         <div class="flex flex-col w-full max-w-4xl overflow-hidden bg-white shadow-xl rounded-2xl mobile-stack lg:flex-row">
             <!-- Left Side - Branding (Hidden on mobile) -->
             <div class="lg:w-1/2 bg-gradient-to-br from-[#1C1C1E] to-[#1C1C1E] p-8 flex flex-col justify-center items-center text-white hidden sm:flex">
@@ -191,7 +80,7 @@
                     @csrf
                     
                     <!-- Email Field -->
-                    <div class="form-field">
+                    <div>
                         <label for="email" class="block mb-1 text-sm font-medium text-gray-700">Email Address</label>
                         <div class="relative">
                             <input type="email" name="email" id="email" placeholder="your@email.com" 
@@ -207,7 +96,7 @@
                     </div>
                     
                     <!-- Password Field -->
-                    <div class="form-field">
+                    <div>
                         <div class="flex items-center justify-between mb-1">
                             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                         </div>
@@ -224,20 +113,13 @@
                         </div>
                     </div>
                     
-                    <!-- Remember Me -->
-                    <div class="w-full mt-4 text-center text-gray-600 form-field max-sm:text-sm">
-                        <p>Welcome back! Please enter your credentials to access the system.</p>
-                    </div>
-                    
                     <!-- Submit Button -->
-                    <div class="form-field">
+                    <div>
                         <button type="submit" 
                                 class="w-full px-4 py-2 text-base font-medium rounded-lg shadow-sm sm:py-3 sm:text-lg btn-primary mobile-mt-4">
                             Sign In
                         </button>
                     </div>
-                    
-                    <!-- Sign Up Link -->
                 </form>
                 
                 <!-- Footer -->
@@ -268,36 +150,6 @@
                     <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
                 `;
             }
-        });
-
-        // Loading and transition logic
-        window.addEventListener('load', function() {
-            const loading = document.getElementById('loading');
-            const emptyBackground = document.getElementById('empty-background');
-            const poweredBy = document.getElementById('powered-by');
-            const mainContent = document.getElementById('main-content');
-            const formFields = document.querySelectorAll('.form-field');
-
-            // Step 1: Show loading dots for 2 seconds
-            setTimeout(() => {
-                loading.classList.add('hidden');
-                // Step 2: Show empty background
-                setTimeout(() => {
-                    poweredBy.classList.add('visible');
-                    // Step 3: Show "Powered by plexcode.com" for 1.5 seconds
-                    setTimeout(() => {
-                        emptyBackground.classList.add('hidden');
-                        mainContent.classList.add('visible');
-                        document.body.style.overflow = 'auto';
-                        // Animate form fields sequentially
-                        formFields.forEach(field => {
-                            setTimeout(() => {
-                                field.classList.add('visible');
-                            }, 100);
-                        });
-                    }, 3000);
-                }, 500);
-            }, 4000);
         });
     </script>
 </body>

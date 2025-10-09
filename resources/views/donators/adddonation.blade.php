@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Donation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        .toast-enter { animation: slideIn 0.3s ease-out; }
-        .toast-exit { animation: slideOut 0.3s ease-in; }
-    </style>
-</head>
+
 <body class="bg-gray-50">
     @include('layouts.header')
 
@@ -349,5 +330,3 @@
             });
         });
     </script>
-</body>
-</html>
